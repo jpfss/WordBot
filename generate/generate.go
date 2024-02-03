@@ -49,7 +49,7 @@ func isExist(items []string, item string) bool {
 	return false
 }
 
-//判断是奇数
+// 判断是奇数
 func isOdd(num int) bool {
 	if num%2 == 0 {
 		return false
@@ -150,7 +150,7 @@ func randomWordLength() WordLength {
 	return wl
 }
 
-// GenRandomWorld returns a random word by convention,
+// GenRandomWord returns a random word by convention,
 // The length must be between 0 and 19.
 // The model must be : none,upper,lower,mix,title
 // none: String lowercase
@@ -158,7 +158,7 @@ func randomWordLength() WordLength {
 // lower: String lowercase
 // mix: String random case
 // title: String First case
-func GenRandomWorld(length int, model string) (WorldList, error) {
+func GenRandomWord(length int, model string) (WorldList, error) {
 	var (
 		buffer         bytes.Buffer
 		randomCharList []RandomChar
@@ -218,25 +218,25 @@ func GenRandomWorld(length int, model string) (WorldList, error) {
 
 // none
 func GenRandomNone(length int) (WorldList, error) {
-	return GenRandomWorld(length, "none")
+	return GenRandomWord(length, "none")
 }
 
 // lower
 func GenRandomLower(length int) (WorldList, error) {
-	return GenRandomWorld(length, "lower")
+	return GenRandomWord(length, "lower")
 }
 
 // title
 func GenRandomTitle(length int) (WorldList, error) {
-	return GenRandomWorld(length, "title")
+	return GenRandomWord(length, "title")
 }
 
 // mix
 func GenRandomMix(length int) (WorldList, error) {
-	return GenRandomWorld(length, "mix")
+	return GenRandomWord(length, "mix")
 }
 
 // upper
 func GenRandomUpper(length int) (WorldList, error) {
-	return GenRandomWorld(length, "upper")
+	return GenRandomWord(length, "upper")
 }
