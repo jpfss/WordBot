@@ -32,7 +32,7 @@ type WordLength struct {
 	chance string
 }
 
-type WorldList struct {
+type WordList struct {
 	Length  int
 	Chance  string
 	Word    string
@@ -158,7 +158,7 @@ func randomWordLength() WordLength {
 // lower: String lowercase
 // mix: String random case
 // title: String First case
-func GenRandomWord(length int, model string) (WorldList, error) {
+func GenRandomWord(length int, model string) (WordList, error) {
 	var (
 		buffer         bytes.Buffer
 		randomCharList []RandomChar
@@ -167,11 +167,11 @@ func GenRandomWord(length int, model string) (WorldList, error) {
 	models := []string{"none", "upper", "lower", "mix", "title"}
 
 	if !isExist(models, model) {
-		return WorldList{}, errors.New("The model must be : none,upper,lower,mix,title")
+		return WordList{}, errors.New("The model must be : none,upper,lower,mix,title")
 	}
 
 	if length > 19 || length < 0 {
-		return WorldList{}, errors.New("The length must be between 0 and 19")
+		return WordList{}, errors.New("The length must be between 0 and 19")
 	}
 
 	for {
@@ -207,7 +207,7 @@ func GenRandomWord(length int, model string) (WorldList, error) {
 		world = buffer.String()
 
 	}
-	w := WorldList{
+	w := WordList{
 		Length:  lengthI,
 		Chance:  chance,
 		Word:    world,
@@ -217,26 +217,26 @@ func GenRandomWord(length int, model string) (WorldList, error) {
 }
 
 // none
-func GenRandomNone(length int) (WorldList, error) {
+func GenRandomNone(length int) (WordList, error) {
 	return GenRandomWord(length, "none")
 }
 
 // lower
-func GenRandomLower(length int) (WorldList, error) {
+func GenRandomLower(length int) (WordList, error) {
 	return GenRandomWord(length, "lower")
 }
 
 // title
-func GenRandomTitle(length int) (WorldList, error) {
+func GenRandomTitle(length int) (WordList, error) {
 	return GenRandomWord(length, "title")
 }
 
 // mix
-func GenRandomMix(length int) (WorldList, error) {
+func GenRandomMix(length int) (WordList, error) {
 	return GenRandomWord(length, "mix")
 }
 
 // upper
-func GenRandomUpper(length int) (WorldList, error) {
+func GenRandomUpper(length int) (WordList, error) {
 	return GenRandomWord(length, "upper")
 }
